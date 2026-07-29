@@ -1,0 +1,76 @@
+The ``7-base_geometry`` module
+==============================
+
+Using ``BaseGeometry``
+---------------------
+
+First, let's import the ``BaseGeometry`` class:
+
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Testing instantiation:
+
+    >>> bg = BaseGeometry()
+    >>> isinstance(bg, BaseGeometry)
+    True
+
+Testing ``area()`` method:
+
+    >>> bg.area()
+    Traceback (most recent call last):
+        ...
+    Exception: area() is not implemented
+
+Testing ``integer_validator()`` with valid integer inputs:
+
+    >>> bg.integer_validator("my_int", 12)
+    >>> bg.integer_validator("width", 89)
+
+Testing ``integer_validator()`` with non-integer inputs:
+
+    >>> bg.integer_validator("name", "John")
+    Traceback (most recent call last):
+        ...
+    TypeError: name must be an integer
+
+    >>> bg.integer_validator("weight", 7.5)
+    Traceback (most recent call last):
+        ...
+    TypeError: weight must be an integer
+
+    >>> bg.integer_validator("is_active", True)
+    Traceback (most recent call last):
+        ...
+    TypeError: is_active must be an integer
+
+    >>> bg.integer_validator("items", [1, 2, 3])
+    Traceback (most recent call last):
+        ...
+    TypeError: items must be an integer
+
+    >>> bg.integer_validator("data", (1, 2))
+    Traceback (most recent call last):
+        ...
+    TypeError: data must be an integer
+
+    >>> bg.integer_validator("info", {"key": "val"})
+    Traceback (most recent call last):
+        ...
+    TypeError: info must be an integer
+
+    >>> bg.integer_validator("nothing", None)
+    Traceback (most recent call last):
+        ...
+    TypeError: nothing must be an integer
+
+Testing ``integer_validator()`` with values less than or equal to 0:
+
+    >>> bg.integer_validator("age", 0)
+    Traceback (most recent call last):
+        ...
+    ValueError: age must be greater than 0
+
+    >>> bg.integer_validator("distance", -4)
+    Traceback (most recent call last):
+        ...
+    ValueError: distance must be greater than 0
