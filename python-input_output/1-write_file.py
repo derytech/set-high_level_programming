@@ -6,7 +6,7 @@ This module contains a function that writes text data to a UTF-8 file.
 
 def write_file(filename="", text=""):
     """
-    Writes a string to a text file in UTF-8 encoding and returns character count.
+    Writes a string to a UTF-8 text file and returns character count.
 
     Args:
         filename (str): The path or name of the target file. Defaults to "".
