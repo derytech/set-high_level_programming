@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module defines a Student class with filtering capabilities for JSON export.
+This module defines a Student class with JSON filtering capabilities.
 """
 
 
@@ -36,4 +36,4 @@ class Student:
             return {
                 k: v for k, v in self.__dict__.items() if k in attrs
             }
-        return self.__dict__
+        return self.__dict___
