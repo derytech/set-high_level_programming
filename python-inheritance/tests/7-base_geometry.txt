@@ -1,75 +1,82 @@
-The ``7-base_geometry`` module
-==============================
+=================================
+Tests for 7-base_geometry.py
+=================================
 
-Using ``BaseGeometry``
----------------------
-
-First, let's import the ``BaseGeometry`` class:
-
+Load the BaseGeometry class:
     >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
-Testing instantiation:
-
+Instantiation and Methods Check:
+--------------------------------
     >>> bg = BaseGeometry()
     >>> isinstance(bg, BaseGeometry)
     True
 
-Testing ``area()`` method:
-
+Testing area():
+---------------
     >>> bg.area()
     Traceback (most recent call last):
         ...
     Exception: area() is not implemented
 
-Testing ``integer_validator()`` with valid integer inputs:
-
+Testing integer_validator() with Valid Inputs:
+------------------------------------------------
     >>> bg.integer_validator("my_int", 12)
     >>> bg.integer_validator("width", 89)
+    >>> bg.integer_validator("age", 1)
 
-Testing ``integer_validator()`` with non-integer inputs:
-
+Testing integer_validator() TypeError Edge Cases:
+--------------------------------------------------
+String value:
     >>> bg.integer_validator("name", "John")
     Traceback (most recent call last):
         ...
     TypeError: name must be an integer
 
-    >>> bg.integer_validator("weight", 7.5)
+Float value:
+    >>> bg.integer_validator("age", 13.5)
     Traceback (most recent call last):
         ...
-    TypeError: weight must be an integer
+    TypeError: age must be an integer
 
-    >>> bg.integer_validator("is_active", True)
+Boolean value (bool inherits from int, must be caught):
+    >>> bg.integer_validator("age", True)
     Traceback (most recent call last):
         ...
-    TypeError: is_active must be an integer
+    TypeError: age must be an integer
 
-    >>> bg.integer_validator("items", [1, 2, 3])
+Tuple value:
+    >>> bg.integer_validator("age", (4,))
     Traceback (most recent call last):
         ...
-    TypeError: items must be an integer
+    TypeError: age must be an integer
 
-    >>> bg.integer_validator("data", (1, 2))
+List value:
+    >>> bg.integer_validator("age", [3])
     Traceback (most recent call last):
         ...
-    TypeError: data must be an integer
+    TypeError: age must be an integer
 
-    >>> bg.integer_validator("info", {"key": "val"})
+Set value:
+    >>> bg.integer_validator("age", {3, 4})
     Traceback (most recent call last):
         ...
-    TypeError: info must be an integer
+    TypeError: age must be an integer
 
-    >>> bg.integer_validator("nothing", None)
+None value:
+    >>> bg.integer_validator("age", None)
     Traceback (most recent call last):
         ...
-    TypeError: nothing must be an integer
+    TypeError: age must be an integer
 
-Testing ``integer_validator()`` with values less than or equal to 0:
-
+Testing integer_validator() ValueError Edge Cases:
+--------------------------------------------------
+Zero value:
     >>> bg.integer_validator("age", 0)
     Traceback (most recent call last):
         ...
     ValueError: age must be greater than 0
 
+Negative value:
     >>> bg.integer_validator("distance", -4)
     Traceback (most recent call last):
         ...
