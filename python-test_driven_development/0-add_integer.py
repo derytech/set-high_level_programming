@@ -1,19 +1,21 @@
 #!/usr/bin/python3
 """
-This module contain the 'add_integer' function
-The function add two numbers (integers or floats)together 
-after casting floats or integers
+This module contains the `add_integer` function.
+
+The function adds two numbers (integers or floats) together
+after casting floats to integers.
 """
 
-def add_integer(a, b = 98):
-    """ add two integers,
 
-    args:
+def add_integer(a, b=98):
+    """Adds two integers.
+
+    Args:
         a: First integer or float.
         b: Second integer or float (default is 98).
-    
-    Return:
-         The sum of a and b as integer.
+
+    Returns:
+        The sum of a and b as an integer.
 
     Raises:
         TypeError: If a or b is not an integer or float.
@@ -22,4 +24,4 @@ def add_integer(a, b = 98):
         raise TypeError("a must be an integer")
     if type(b) not in (int, float):
         raise TypeError("b must be an integer")
-    return in(a) + int(b)
+    return int(a) + int(b)
