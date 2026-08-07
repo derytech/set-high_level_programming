@@ -22,8 +22,22 @@ Multiplying with floats:
     >>> matrix_mul([[1.5, 2.5]], [[3.0, 4.0], [5.0, 6.0]])
     [[17.0, 21.0]]
 
+Missing Arguments
+=================
+
+Missing 1 argument:
+    >>> matrix_mul([[1, 2]])
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix_mul() missing 1 required positional argument: 'm_b'
+
+Missing 2 arguments:
+    >>> matrix_mul()
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
 Validation Edge Cases (In Required Order)
-=========================================
+=======================================
 
 1. Not a list:
     >>> matrix_mul("not a list", [[1, 2]])
