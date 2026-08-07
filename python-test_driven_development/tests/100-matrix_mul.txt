@@ -1,3 +1,4 @@
+cat << 'EOF' > tests/100-matrix_mul.txt
 ==============================
 How to Use 100-matrix_mul.py
 ==============================
@@ -36,8 +37,9 @@ Missing 2 arguments:
     Traceback (most recent call last):
         ...
     TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
 Validation Edge Cases (In Required Order)
-=======================================
+=========================================
 
 1. Not a list:
     >>> matrix_mul("not a list", [[1, 2]])
@@ -109,3 +111,4 @@ Validation Edge Cases (In Required Order)
     Traceback (most recent call last):
         ...
     ValueError: m_a and m_b can't be multiplied
+EOF
