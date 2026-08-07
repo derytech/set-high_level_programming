@@ -1,0 +1,84 @@
+=================================
+How to Use 5-text_indentation.py
+=================================
+
+This module defines the ``text_indentation`` function.
+
+Usage
+=====
+
+Loading the function:
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Printing text with punctuation (., ?, :):
+    >>> text_indentation("Hello. World? How are you: fine.")
+    Hello.
+    <BLANKLINE>
+    World?
+    <BLANKLINE>
+    How are you:
+    <BLANKLINE>
+    fine.
+    <BLANKLINE>
+
+Text without matching punctuation:
+    >>> text_indentation("Hello World")
+    Hello World
+
+Text with leading and trailing spaces:
+    >>> text_indentation("   Hello.   World?   ")
+    Hello.
+    <BLANKLINE>
+    World?
+    <BLANKLINE>
+
+Text with newlines and leading spaces:
+    >>> text_indentation("Line 1\n  Line 2.")
+    Line 1
+    Line 2.
+    <BLANKLINE>
+
+Empty string:
+    >>> text_indentation("")
+
+Invalid Text Types
+==================
+
+Passing an integer:
+    >>> text_indentation(123)
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
+
+Passing None:
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
+
+Passing a float:
+    >>> text_indentation(12.34)
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
+
+Passing a list:
+    >>> text_indentation(["Hello."])
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
+
+Passing a dictionary:
+    >>> text_indentation({"text": "Hello."})
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
+
+Missing Arguments
+=================
+
+Missing required argument:
+    >>> text_indentation()
+    Traceback (most recent call last):
+        ...
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
