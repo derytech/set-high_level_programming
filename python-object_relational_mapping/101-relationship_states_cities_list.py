@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""List states and their cities using SQLAlchemy relationships."""
+"""List all states and their cities."""
 
 import sys
 
@@ -7,6 +7,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, joinedload
 
 from relationship_state import State
+from relationship_city import City
 
 
 if __name__ == "__main__":

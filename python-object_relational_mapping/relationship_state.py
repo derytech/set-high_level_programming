@@ -1,15 +1,14 @@
 #!/usr/bin/python3
-"""Define the State class for the SQLAlchemy relationship."""
+"""State class with a relationship to City."""
 
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import relationship, declarative_base
+from sqlalchemy.orm import relationship
 
-
-Base = declarative_base()
+from model_state import Base
 
 
 class State(Base):
-    """Represent a state stored in the states table."""
+    """State class."""
 
     __tablename__ = "states"
 

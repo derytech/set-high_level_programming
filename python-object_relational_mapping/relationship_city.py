@@ -1,13 +1,14 @@
 #!/usr/bin/python3
-"""Define the City class for the SQLAlchemy relationship."""
+"""City class with a relationship to State."""
 
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
-from relationship_state import Base
+
+from model_state import Base
 
 
 class City(Base):
-    """Represent a city stored in the cities table."""
+    """City class."""
 
     __tablename__ = "cities"
 
@@ -15,7 +16,7 @@ class City(Base):
     name = Column(String(128), nullable=False)
     state_id = Column(
         Integer,
-        ForeignKey("states.id", ondelete="CASCADE"),
+        ForeignKey("states.id"),
         nullable=False
     )
 
