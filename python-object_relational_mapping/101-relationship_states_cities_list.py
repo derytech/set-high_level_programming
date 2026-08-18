@@ -1,10 +1,9 @@
 #!/usr/bin/python3
-"""List all states and their cities using one database query."""
+"""List all states and their cities using SQLAlchemy relationships."""
 
 from relationship_state import Base, State
-from relationship_city import City
 from sqlalchemy import create_engine
-from sqlalchemy.orm import Session, joinedload
+from sqlalchemy.orm import Session
 import sys
 
 
@@ -18,13 +17,11 @@ if __name__ == "__main__":
 
     session = Session(engine)
 
-    states = session.query(State).options(
-        joinedload(State.cities)
-    ).order_by(State.id).all()
+    states = session.query(State).order_by(State.id).all()
 
     for state in states:
         print("{}: {}".format(state.id, state.name))
-        for city in sorted(state.cities, key=lambda city: city.id):
+        for city in state.cities:
             print("\t{}: {}".format(city.id, city.name))
 
     session.close()
