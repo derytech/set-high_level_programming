@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""List all states and their cities using one database query."""
+"""List all cities and their corresponding states using one query."""
 
 from relationship_state import Base, State
 from relationship_city import City
@@ -18,13 +18,15 @@ if __name__ == "__main__":
 
     session = Session(engine)
 
-    states = session.query(State).options(
-        joinedload(State.cities)
-    ).order_by(State.id).all()
+    cities = session.query(City).options(
+        joinedload(City.state)
+    ).order_by(City.id).all()
 
-    for state in states:
-        print("{}: {}".format(state.id, state.name))
-        for city in state.cities:
-            print("\t{}: {}".format(city.id, city.name))
+    for city in cities:
+        print("{}: {} -> {}".format(
+            city.id,
+            city.name,
+            city.state.name
+        ))
 
     session.close()
